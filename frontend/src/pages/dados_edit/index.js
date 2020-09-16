@@ -6,15 +6,20 @@ import './styles.css';
 
 export default class Dados_edit extends Component {
     state = {
-        dado: {}
+        estacao_id: '',
+        temperatura: '',
+        velocidade_vento: '',
+        umidade: '',
+        data: ''
     }
 
     async componentDidMount() {
         const { id } = this.props.match.params;
 
         const response = await api.get(`/dados/${id}`)
+        console.log(response)
 
-        this.setState({ dado: response.data})
+        this.setState({ response })
     }
 
     changeHandler = (e) => {
