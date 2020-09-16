@@ -4,19 +4,18 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 
-export default class Dados_edit extends Component {
+export default class Estacoes_edit extends Component {
     state = {
-        estacao_id: '',
-        temperatura: '',
-        velocidade_vento: '',
-        umidade: '',
-        data: ''
+        serial: '',
+        lat: '',
+        lon: '',
+        nome: ''
     }
 
     async componentDidMount() {
         const { id } = this.props.match.params;
 
-        const { data } = await api.get(`/dados/${id}`)
+        const {data} = await api.get(`/estacoes/${id}`)
         console.log(data)
 
         this.setState({ data })
@@ -28,58 +27,51 @@ export default class Dados_edit extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        const { id } = this.props.match.params;
-        api.put(`/dados/${id}`, this.state).then(_ => {
-            this.props.history.push('/dados')
+        const {id} = this.props.match.params;
+        api.put(`/estacoes/${id}`, this.state).then(_ => {
+            this.props.history.push('/estacoes')
         }).catch(error => {
             console.log(error)
         })
     }
 
     render() {
-        const {estacao_id, temperatura, velocidade_vento, umidade, data} = this.state
+        const {serial, lat, lon, nome} = this.state
 
-        return (
+        return(
             <div>
                 <div className="actions">
-                <Link to="/dados" className="back-btn">Voltar</Link>
+                <Link to="/estacoes" className="back-btn">Voltar</Link>
                 </div>
 
                 <div className="main-div">
                     <form onSubmit={this.submitHandler}>
                         <div>
-                            <label>Id da estação:</label>
+                            <label>Serial:</label>
                             <input type="text" 
-                            name="estacao_id"
-                            value={estacao_id} 
+                            name="serial"
+                            value={serial} 
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
-                            <label>Temperatura:</label>
+                            <label>Latitude:</label>
                             <input type="text" 
-                            name="temperatura"
-                            value={temperatura}
+                            name="lat"
+                            value={lat}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
-                            <label>Velocidade do vento:</label>
+                            <label>Longitude:</label>
                             <input type="text" 
-                            name="velocidade_vento"
-                            value={velocidade_vento}
+                            name="lon"
+                            value={lon}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
-                            <label>Umidade:</label>
+                            <label>Nome:</label>
                             <input type="text" 
-                            name="umidade"
-                            value={umidade}
-                            onChange={this.changeHandler}/>
-                        </div>
-                        <div>
-                            <label>Data:</label>
-                            <input type="text" 
-                            name="data"
-                            value={data}
+                            name="nome"
+                            value={nome}
                             onChange={this.changeHandler}/>
                         </div>
                         <button type="submit" className="btn-submit">Alterar</button>

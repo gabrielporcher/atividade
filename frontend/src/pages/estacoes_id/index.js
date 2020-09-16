@@ -27,6 +27,11 @@ export default class Estacoes_id extends Component {
         }
     }
 
+    goTo = () => {
+        const {id} = this.props.match.params;
+        this.props.history.push(`/estacoes/alterar/${id}`);
+    }
+
     render() {
         const {estacao} = this.state;
 
@@ -42,7 +47,7 @@ export default class Estacoes_id extends Component {
                 <p><strong>Longitude: </strong>{estacao.lon}</p>
                 <p>{estacao.nome}</p>
 
-                <button className="button-a"> Editar</button>
+                <button className="button-a" onClick={this.goTo}> Editar</button>
                 <button className="button-b" onClick={this.deleteStation}> Excluir</button>
                 
                 </div>

@@ -6,6 +6,7 @@ import Main from './pages/main';
 import Estacoes from './pages/estacoes';
 import Estacoes_id from './pages/estacoes_id';
 import Estacoes_add from './pages/estacoes_add';
+import Estacoes_edit from './pages/estacoes_edit';
 import Dados from './pages/dados';
 import Dados_add from './pages/dados_add';
 import Dados_id from './pages/dados_id';
@@ -16,12 +17,13 @@ const Routes = () => (
         <Switch>
             <Route exact path="/" component={Main} />
             <Route exact path="/estacoes" component={Estacoes} />
-            <Route path="/estacoes/:id" component={Estacoes_id} />
+            <Route exact path="/estacoes/:id" component={Estacoes_id} />
+            <Route exact path="/estacoes/alterar/:id" component={Estacoes_edit} />
             <Route exact path="/add/estacao" component={Estacoes_add} />
             <Route exact path="/add/dado" component={Dados_add} />
             <Route exact path="/dados" component={Dados} />
             <Route exact path="/dados/:id" component={Dados_id} />
-            <Route path="/dados/alterar/:id" component={Dados_edit} />
+            <Route exact path="/dados/alterar/:id" component={Dados_edit} />
         </Switch>
     </BrowserRouter>
 )
