@@ -1,0 +1,64 @@
+.dados-info {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background: #FFF;
+    border-radius: 5px;
+    border: 1px solid #DDD;
+}
+
+.dados-info h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.dados-info p {
+    color: #666;
+    line-height: 24px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.button-a {
+    border-radius: 5px;
+    border: 2px solid #117864;
+    background-color: #117864;
+    padding: 8px 11px;
+    margin-right: 20px;
+    vertical-align: middle;
+    color: #FFF;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.button-a:hover{
+    background-color: #FFF;
+    color: #117864;
+}
+
+.button-b {
+    border-radius: 5px;
+    border: 2px solid #943126;
+    background-color: #943126;
+    padding: 8px 11px;
+    vertical-align: middle;
+    color: #FFF;
+    text-decoration: none;
+    transition: all 0.2s
+}
+
+.button-b:hover {
+    background-color: #FFF;
+    color: #943126;
+}
+
+.links {
+    max-width: 700px;
+    margin: 20px auto 0;
+}
+
+.back-btn {
+    color: #808080;
+    text-decoration: none;
+    font-weight: bold;
+}

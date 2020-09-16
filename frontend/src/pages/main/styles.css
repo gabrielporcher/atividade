@@ -1,0 +1,26 @@
+.data{
+    max-width: 700px;
+    margin: 20px auto 0;
+}
+
+.data article{
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data article:hover {
+    background-color: whitesmoke;
+}
+
+.no-dec {
+    text-decoration: none;
+    color: black;
+}
+
