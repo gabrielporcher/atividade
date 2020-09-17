@@ -6,19 +6,20 @@ import './styles.css';
 
 export default class Estacoes_edit extends Component {
     state = {
-        serial: '',
-        lat: '',
-        lon: '',
-        nome: ''
+        estacao: {
+            serial: '',
+            lat: '',
+            lon:  '',
+            nome: ''
+        }
     }
 
     async componentDidMount() {
         const { id } = this.props.match.params;
 
-        const {data} = await api.get(`/estacoes/${id}`)
-        console.log(data)
+        const response = await api.get(`/estacoes/${id}`)
 
-        this.setState({ data })
+        this.setState({ estacao:response.data })
     }
 
     changeHandler = (e) => {
@@ -36,7 +37,7 @@ export default class Estacoes_edit extends Component {
     }
 
     render() {
-        const {serial, lat, lon, nome} = this.state
+        const {serial, lat, lon, nome} = this.state.estacao
 
         return(
             <div>
@@ -49,29 +50,29 @@ export default class Estacoes_edit extends Component {
                         <div>
                             <label>Serial:</label>
                             <input type="text" 
-                            name="serial"
-                            value={serial} 
+                            name="serial" 
+                            defaultValue={serial}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
                             <label>Latitude:</label>
                             <input type="text" 
                             name="lat"
-                            value={lat}
+                            defaultValue={lat}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
                             <label>Longitude:</label>
                             <input type="text" 
                             name="lon"
-                            value={lon}
+                            defaultValue={lon}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
                             <label>Nome:</label>
                             <input type="text" 
                             name="nome"
-                            value={nome}
+                            defaultValue={nome}
                             onChange={this.changeHandler}/>
                         </div>
                         <button type="submit" className="btn-submit">Alterar</button>

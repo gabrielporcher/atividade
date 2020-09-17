@@ -6,20 +6,21 @@ import './styles.css';
 
 export default class Dados_edit extends Component {
     state = {
-        estacao_id: '',
-        temperatura: '',
-        velocidade_vento: '',
-        umidade: '',
-        data: ''
+        dado: {
+            estacao_id: '',
+            temperatura: '',
+            velocidade_vento: '',
+            umidade: '',
+            data: ''
+        }
     }
 
     async componentDidMount() {
         const { id } = this.props.match.params;
 
-        const { data } = await api.get(`/dados/${id}`)
-        console.log(data)
+        const response = await api.get(`/dados/${id}`)
 
-        this.setState({ data })
+        this.setState({ dado: response.data })
     }
 
     changeHandler = (e) => {
@@ -37,7 +38,7 @@ export default class Dados_edit extends Component {
     }
 
     render() {
-        const {estacao_id, temperatura, velocidade_vento, umidade, data} = this.state
+        const {estacao_id, temperatura, velocidade_vento, umidade, data} = this.state.dado
 
         return (
             <div>
@@ -51,35 +52,35 @@ export default class Dados_edit extends Component {
                             <label>Id da estação:</label>
                             <input type="text" 
                             name="estacao_id"
-                            value={estacao_id} 
+                            defaultValue={estacao_id} 
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
                             <label>Temperatura:</label>
                             <input type="text" 
                             name="temperatura"
-                            value={temperatura}
+                            defaultValue={temperatura}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
                             <label>Velocidade do vento:</label>
                             <input type="text" 
                             name="velocidade_vento"
-                            value={velocidade_vento}
+                            defaultValue={velocidade_vento}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
                             <label>Umidade:</label>
                             <input type="text" 
                             name="umidade"
-                            value={umidade}
+                            defaultValue={umidade}
                             onChange={this.changeHandler}/>
                         </div>
                         <div>
                             <label>Data:</label>
                             <input type="text" 
                             name="data"
-                            value={data}
+                            defaultValue={data}
                             onChange={this.changeHandler}/>
                         </div>
                         <button type="submit" className="btn-submit">Alterar</button>
